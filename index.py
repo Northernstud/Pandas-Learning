@@ -124,3 +124,4 @@ print(myStack.size)
 
 myStack.pop()
 myStack.traverseAndPrint()
+
