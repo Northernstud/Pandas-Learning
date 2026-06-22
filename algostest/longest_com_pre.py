@@ -1,12 +1,41 @@
 from typing import List
 
-
-def longestCommonPrefix(strs: List[str]) -> str:
+# my solution 
+def longestCommonPrefix2(strs: List[str]) -> str:
     result = ""
+    l = 0
+    if "" in strs:
+        return ""
+
     for i in range(len(strs[0])):
-        if i < len(strs[1]) and i < len(strs[2]) and strs[0][i] == strs[1][i] and strs[2][i] == strs[1][i]:
+        for j in range(1, len(strs)):
+            if i < len(strs[j]):
+                if strs[0][i] == strs[j][i]:
+                    l = 0
+                else: 
+                    l += 1
+                    break
+            else:
+                l +=1
+                break
+        if l == 0:
             result += strs[0][i]
+        else: 
+            break
+
     return result
+
+# better solution return everything from 0 if we foind the different one 
+def longestCommonPrefix3(strs: List[str]) -> str:
+    for i in range(len(strs[0])):
+        for j in range(1, len(strs)):
+            if i >= len(strs[j]) or strs[0][i] != strs[j][i]:
+                return strs[0][:i]
+    
+    return strs[0]
+    
+
+
 
 tests = [
     (["flower","flow","flight"], "fl"),
@@ -23,9 +52,11 @@ tests = [
     (["test","test","test"], "test"),
     (["a","ab","abc"], "a"),
     (["car","cat","can"], "ca"),
-    (["zebra","apple","apricot"], "")
+    (["zebra","apple","apricot"], ""),
+    (["flower", "flo", "flow"], "flo")
 ]
 
 for value, expected in tests:
-    result = longestCommonPrefix(value)
+    result = longestCommonPrefix3(value)
     print(value, result, "✓" if result == expected else "✗")
+
