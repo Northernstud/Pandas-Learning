@@ -1,6 +1,6 @@
 from typing import List
 
-# my solution 
+# my 1st solution 
 def longestCommonPrefix2(strs: List[str]) -> str:
     result = ""
     l = 0
