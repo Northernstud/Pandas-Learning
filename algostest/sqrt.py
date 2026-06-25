@@ -34,7 +34,6 @@ def mySqrt2( x: int) -> int:
         return mid - 1
     else: 
         return mid
-        return mid
 
 print(mySqrt2(8))
 print(2**31 - 46340**2)
@@ -85,3 +84,7 @@ for x, expected in test_cases:
     result = mySqrt2(x)  # replace with your function
     status = "PASS" if result == expected else "FAIL"
     print(status)
+
+# linux push through terminal
+b = 8
+a = b +3
